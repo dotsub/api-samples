@@ -1,0 +1,21 @@
+video {
+    width: 1080px;
+    position: relative;
+}
+
+#subtitleArea {
+    position: relative;
+    top: -90px;
+    width: 1080px;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    background-color: rgba(0,0,0,0.6);
+    font-family: Helvetica, sans-serif;
+    float: left;
+    padding: 10px;
+}
+
+#selectArea {
+    clear: both;
+}
