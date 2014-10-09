@@ -27,8 +27,9 @@ def execute_api_request(url)
   JSON.parse(res.body)
 end
 
-def download_file(url, filename)
+def download_file(url)
   res = execute_http_request(url)
+  filename = res.get_fields('Content-Disposition')[0].gsub('attachment;filename=', '')
   File.write(filename, res.body)
 end
 
@@ -46,7 +47,7 @@ begin
     media_metadata['languages'].each do|l|
       if l[1]['workflowStatus'] == 'PUBLISHED'
         #download captions for published videos
-        download_file("https://dotsub.com/media/#{m['id']}/c/#{l[0]}/srt", "#{m['id']}_#{l[0]}.srt")
+        download_file("https://dotsub.com/media/#{m['id']}/c/#{l[0]}/srt")
       end
     end
   end
